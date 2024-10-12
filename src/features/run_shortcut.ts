@@ -1,5 +1,5 @@
+import * as path from "path";
 import * as vscode from "vscode";
-import path = require("path");
 
 export function runShortcut(context: vscode.ExtensionContext) {
     //Feature to run tamarin directly using vscode just click on the bottom right handcorner and select the mode.
@@ -54,6 +54,7 @@ export function runShortcut(context: vscode.ExtensionContext) {
         }
     });
 
+    context.subscriptions.push(showActions);
     context.subscriptions.push(runTamarin);
     context.subscriptions.push(runTamarinAutoSources);
 }

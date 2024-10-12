@@ -1,11 +1,11 @@
 import * as vscode from "vscode";
-import { symbolTables } from "./syntax_errors";
 import {
     CreateSymbolTableResult,
     DeclarationType,
     TamarinSymbol,
     TamarinSymbolTable,
 } from "../symbol_table/create_symbol_table";
+import { symbolTables } from "./syntax_errors";
 
 export function get_symbol(range: vscode.Range, symbol_table: TamarinSymbolTable): TamarinSymbol | null {
     for (let k = 0; k < symbol_table.getSymbols().length; k++) {
@@ -69,7 +69,6 @@ export function RenameCommand(context: vscode.ExtensionContext) {
             while (wordEnd < text.length && /[a-zA-Z0-9_-]/.test(text.charAt(wordEnd))) {
                 wordEnd++;
             }
-            const word = text.slice(wordStart, wordEnd);
 
             //Find the symbol corresponding
             const startPos = new vscode.Position(position.line, wordStart);

@@ -51,7 +51,6 @@ export function go_to_definition_command(context: vscode.ExtensionContext) {
             while (wordEnd < text.length && /[a-zA-Z0-9_-]/.test(text.charAt(wordEnd))) {
                 wordEnd++;
             }
-            const word = text.slice(wordStart, wordEnd);
 
             //Find the symbol corresponding
             const startPos = new vscode.Position(position.line, wordStart);

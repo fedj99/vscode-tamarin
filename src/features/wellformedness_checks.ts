@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import * as Parser from "web-tree-sitter";
 import {
     DeclarationType,
     ReservedFacts,
@@ -8,7 +9,6 @@ import {
     set_associated_qf,
 } from "../symbol_table/create_symbol_table";
 import { getName } from "./syntax_errors";
-import Parser = require("web-tree-sitter");
 
 function build_error_display(
     node: Parser.SyntaxNode,
@@ -809,12 +809,7 @@ const fixMap = new Map<vscode.Diagnostic, vscode.CodeAction>();
 
 // Register the code action provider usefull for the quick fixes
 vscode.languages.registerCodeActionsProvider("tamarin", {
-    provideCodeActions(
-        document: vscode.TextDocument,
-        range: vscode.Range,
-        context: vscode.CodeActionContext,
-        token: vscode.CancellationToken,
-    ) {
+    provideCodeActions(document: vscode.TextDocument, range: vscode.Range, context: vscode.CodeActionContext) {
         const actions: vscode.CodeAction[] = [];
         for (const diagnostic of context.diagnostics) {
             const fix = fixMap.get(diagnostic);

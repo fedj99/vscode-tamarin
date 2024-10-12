@@ -1,8 +1,8 @@
-import path = require("path");
+import * as path from "path";
 import * as vscode from "vscode";
 import { Range } from "vscode";
+import * as Parser from "web-tree-sitter";
 import { CreateSymbolTableResult, createSymbolTable } from "../symbol_table/create_symbol_table";
-import Parser = require("web-tree-sitter");
 
 const diagnostics = vscode.languages.createDiagnosticCollection("Tamarin");
 export const symbolTables = new Map<string, CreateSymbolTableResult>();
