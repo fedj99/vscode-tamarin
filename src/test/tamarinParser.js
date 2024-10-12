@@ -7,8 +7,8 @@ var Tamarin = require("../grammar/tree-sitter-tamarin/bindings/node");
 //Tests avec le parser
 var parser = new Parser();
 parser.setLanguage(Tamarin);
-var sourceCodePath = '../grammar/tree-sitter-tamarin/example_file.spthy';
-var sourceCode = fs.readFileSync(path.resolve(__dirname, sourceCodePath), 'utf8');
+var sourceCodePath = "../grammar/tree-sitter-tamarin/example_file.spthy";
+var sourceCode = fs.readFileSync(path.resolve(__dirname, sourceCodePath), "utf8");
 var tree = parser.parse(sourceCode);
 function display_tree(node) {
     var _a;

@@ -1,41 +1,27 @@
-import * as path from 'path';
-import { ExtensionContext } from 'vscode';
+import * as path from "path";
+import { ExtensionContext } from "vscode";
 
-
-import {
-	LanguageClient,
-	LanguageClientOptions,
-	ServerOptions,
-	TransportKind
-} from 'vscode-languageclient/node';
+import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient/node";
 
 let client: LanguageClient;
 
 export const startLanguageServer = async (context: ExtensionContext) => {
-	const serverModule = context.asAbsolutePath(
-		path.join('server', 'out', 'server.js')
-	);
+    const serverModule = context.asAbsolutePath(path.join("server", "out", "server.js"));
 
-	const serverOptions: ServerOptions = {
-		run: { module: serverModule, transport: TransportKind.ipc },
-		debug: { module: serverModule, transport: TransportKind.ipc }
-	};
+    const serverOptions: ServerOptions = {
+        run: { module: serverModule, transport: TransportKind.ipc },
+        debug: { module: serverModule, transport: TransportKind.ipc },
+    };
 
-	const clientOptions: LanguageClientOptions = {
-		documentSelector: [{ scheme: 'file', language: 'spthy' }],
-	};
+    const clientOptions: LanguageClientOptions = {
+        documentSelector: [{ scheme: "file", language: "spthy" }],
+    };
 
-	client = new LanguageClient(
-		'languageServerTamarin',
-		'Tamarin Language Server',
-		serverOptions,
-		clientOptions
-	);
+    client = new LanguageClient("languageServerTamarin", "Tamarin Language Server", serverOptions, clientOptions);
 
-	await client.start();
+    await client.start();
 };
 
-
 export const stopLanguageServer = async () => {
-	await client?.stop();
+    await client?.stop();
 };

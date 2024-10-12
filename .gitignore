@@ -1,7 +1,6 @@
 *.visx
 *.vsix
 
-
 # Extra
 node_modules
 # Extension
